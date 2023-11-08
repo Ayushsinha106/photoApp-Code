@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { storage, firestore } from './firebase';
+import firebase from 'firebase/compat/app';
 
 const NewPost = () => {
   const [caption, setCaption] = useState('');
@@ -40,7 +41,8 @@ const NewPost = () => {
               firestore.collection('photos').add({
                 caption,
                 photoUrl: url,
-                likes: 0
+                likes: 0,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
               })
                 .then((docRef) => {
                   const documentId = docRef.id;
