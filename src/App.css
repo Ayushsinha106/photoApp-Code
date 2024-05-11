@@ -23,9 +23,9 @@ body{
 }
 
 .Upload {
-  display: block;
   z-index: 1;
   position: relative;
+  background-color: black;
 }
 
 input[type='file'] {
@@ -77,6 +77,11 @@ img {
   border-top-right-radius: 20px;
   z-index: 1000;
 }
+.bigHeartDiv{
+  width: 100%;
+  height: 280px;
+  position: absolute;
+}
 .p{
   flex-grow: 1;
   background: rgb(81, 59, 59);
@@ -92,28 +97,47 @@ img {
   align-items: center;
 }
 
-.p span {
+.p .caption {
   flex-grow: 2;
-  margin: 0 20px;
+  margin: 20px;
 }
 
 
 progress {
   min-width: 100%;
 }
+.UploadDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
 
+}
 .Upload {
   text-align: center;
   margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f4f4f4;
+  background-color: #2d2929;
+  /* position: absolute; */
+  /* z-index: 9999; */
 }
-
+.UploadDiv p {
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  cursor: pointer;
+}
 .Upload h2 {
   font-size: 24px;
-  color: #333;
+  color: #f0eeee;
 }
 
 .Upload input[type="file"] {
@@ -146,17 +170,8 @@ progress {
   margin: 10px 0;
 }
 
-@media screen and (max-width: 450px) {
-  .Post {
-    width: 100%;
-    height: 400px;
-  }
-  img{
-    height: 350px;
-  }
-}
 .likeDiv{
-  width: 20%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -221,4 +236,207 @@ svg{
 
 .likeAniBig {
   animation: scalingBig 1s  cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.uploadName{
+  height: 20px;
+  width: 80px;
+  color: blue;
+  font-size: xx-small;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: 'Courier New', Courier, monospace;
+}
+.PostDetails{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.uploader{
+  font-size: medium;
+  margin: 0 20px;
+}
+.signup-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #313030;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+.signUpBtn{
+  height: 40px;
+  width: 80%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.logInBtn{
+  height: 40px;
+  width: 80%;
+  padding: 10px;
+  background-color: #042b54;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.logOutBtn{
+  height: 35px;
+  width: 40%;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #e5e0e0;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.imgPreview{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.userLogoDiv{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+.userLogo{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+  right: 0;
+}
+
+.detailDiv{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detailDiv img{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.detailDiv h1{
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+.detailDiv h2{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.detailDiv p{
+  font-size: 23px;
+  margin-bottom: 20px;
+  position: absolute;
+  right: 0;
+  margin: 15px;
+  cursor: pointer;
+}
+/* BTN */
+.button-18 {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 380px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.button-18:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+@media screen and (max-width: 450px) {
+  .Post {
+    width: 100%;
+    min-height: 400px;
+  }
+  img{
+    height: 350px;
+  }
+  .bigHeartDiv{
+    height: 350px;
+  }
 }

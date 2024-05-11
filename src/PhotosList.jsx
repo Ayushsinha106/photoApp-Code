@@ -2,11 +2,13 @@ import React from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { useState } from 'react'
 import { firestore } from './firebase';
+// import chisato from "./imgs/chisat04.png";
 
 const PhotosList = () => {
   const photosRef = firestore.collection('photos')
   const query = photosRef.orderBy('caption')
   const [photos] = useCollectionData(query, { idField: 'id' })
+  // const photos = [{ photoUrl: "./imgs/Ai hoshino.jpg", caption: "Chisato the idol lycoReco poster girl, female john wick, bullet dodger singaopore Takina's boysfriend  ", id: "chisatono1", likes: 9999 }]
   const [lastClickTime, setLastClickTime] = useState(0)
 
 
@@ -86,16 +88,19 @@ const PhotosList = () => {
           (<React.Fragment key={index}>
             <div id={index} className="Post">
               <img src={photo.photoUrl} alt={photo.caption} onClick={e => DoubleClick(e, index)} />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                fill="currentColor"
-                className="bi bi-suit-heart-fill bigHeart"
-                viewBox="0 0 16 16"
-              >
-                <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
-              </svg>
+              <div className="bigHeartDiv">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  className="bi bi-suit-heart-fill bigHeart"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                </svg>
+
+              </div>
               <div className='p'>
                 <div className="likeDiv">
                   <svg
@@ -111,7 +116,10 @@ const PhotosList = () => {
                   </svg>
                   <span className="likeNumber">{photo.likes}</span>
                 </div>
-                <span>{photo.caption}</span>
+                <div className="PostDetails">
+                  <span className="uploader">{photo.username ? photo.username : 'Admin'}</span>
+                  <span className='caption'>{photo.caption}</span>
+                </div>
               </div>
             </div>
           </React.Fragment>)

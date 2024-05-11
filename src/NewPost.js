@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { storage, firestore } from './firebase';
 import firebase from 'firebase/compat/app';
 
-const NewPost = () => {
+const NewPost = ({ user, handleHide }) => {
   const [caption, setCaption] = useState('');
   const [photo, setPhoto] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [profilePic, setProfilePic] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const handleCaptionChange = (e) => {
     setCaption(e.target.value);
@@ -14,6 +16,9 @@ const NewPost = () => {
   const handlePhotoChange = (e) => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
+      setProfilePic(e.target.files[0])
+      const imageUrl = URL.createObjectURL(e.target.files[0])
+      setPreviewImage(imageUrl)
     }
   };
 
@@ -41,6 +46,7 @@ const NewPost = () => {
               firestore.collection('photos').add({
                 caption,
                 photoUrl: url,
+                username: user.displayName,
                 likes: 0,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
               })
@@ -58,21 +64,29 @@ const NewPost = () => {
   };
 
   return (
-    <div className='Upload'>
-      <h2>Upload a Photo</h2>
-      <input type="file" onChange={handlePhotoChange} accept="image/jpeg, image/png, image/gif image/jpg" />
-      <br />
-      <input
-        type="text"
-        placeholder="Caption"
-        value={caption}
-        onChange={handleCaptionChange}
-      />
-      <br />
-      <button onClick={handleUpload}>Upload</button>
-      {uploadProgress > 0 && (
-        <progress value={uploadProgress} max="100" />
-      )}
+    <div className="UploadDiv">
+      <p onClick={handleHide}>&#x274C;</p>
+      <div className='Upload'>
+        <h2>Upload a Photo</h2>
+        <input type="file" onChange={handlePhotoChange} accept="image/jpeg, image/png, image/gif image/jpg"
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="Caption"
+          value={caption}
+          onChange={handleCaptionChange}
+        />
+        <br />
+        <br />
+        {profilePic && (
+          <img src={previewImage} alt="Preview" className="imgPreview" />
+        )}
+        <button onClick={handleUpload}>Upload</button>
+        {uploadProgress > 0 && (
+          <progress value={uploadProgress} max="100" />
+        )}
+      </div>
     </div>
   );
 };
