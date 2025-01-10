@@ -1,3 +1,14 @@
+# About
+- Pinterest like site made using react and firebase with Auth you can access it [here](https://photoapp-ayush.netlify.app/)
+
+## Features
+- login/signup with forgot password
+- upoad image with caption
+- double tap to like images (infinite times)
+- see profile
+
+  !! One thing to note that  I made this long time ago it doesn't have routes 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
